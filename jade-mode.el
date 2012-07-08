@@ -33,7 +33,7 @@
 (defcustom jade-indent-offset 2
   "Amount of offset per level of indentation."
   :type 'integer
-  :group 'haml)
+  :group 'jade)
 
 (defun jade-previous-line-indentation ()
   (save-excursion
