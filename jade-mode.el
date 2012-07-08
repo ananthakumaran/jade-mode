@@ -111,11 +111,13 @@
   (when (re-search-forward "^ *[^ \n]*\\(\\)(\\(.*\\)).*$" limit t)
     (goto-char (match-beginning 2))
     (save-match-data
-      (while (re-search-forward " *\\([^= \n,'\"]+?\\) *[=,\)]" limit t)
-	(put-text-property (match-beginning 1) (match-end 1)
-			   'face font-lock-constant-face)
-	(backward-char)
-	(re-search-forward "," limit t)))))
+      (let ((limit (save-excursion (end-of-line) (point))))
+	(while (re-search-forward " *\\([^= \n,'\"]+?\\) *[=,\)]" limit t)
+	  (put-text-property (match-beginning 1) (match-end 1)
+			     'face font-lock-constant-face)
+	  (backward-char)
+	  (re-search-forward "," limit t))))
+    t))
 
 (defconst jade-font-lock-keywords
   `(("^!!!.*$" 0 font-lock-constant-face)
