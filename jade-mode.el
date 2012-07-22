@@ -123,9 +123,9 @@
   `(("^!!!.*$" 0 font-lock-constant-face)
     (jade-highlight-js-block 1 font-lock-preprocessor-face)
     (jade-highlight-attributes 1 font-lock-preprocessor-face)
-    ("^ *[^ \n]*\\(#\\(\\w\\|_\\|-\\)+\\)" 1 font-lock-keyword-face)
     ("^ *\\([a-z0-9_:\\-]+\\)"  1 font-lock-type-face)
-    ("^ *[^ \n]*\\(\\.\\(\\w\\|_\\|-\\)+\\)" 1 font-lock-type-face)
+    ("^ *[^ \n]*?\\(\\.\\(\\w\\|_\\|-\\|\\.\\|#\\)+\\)" 1 font-lock-type-face)
+    ("^ *[^ \n]*\\(#\\(\\w\\|_\\|-\\)+\\)" 1 font-lock-keyword-face t)
     ("[^\\]\\([#!]{\\).*?\\(\}\\)"  (1 font-lock-variable-name-face)
      (2 font-lock-variable-name-face))))
 
