@@ -51,7 +51,7 @@
 (defun jade-compute-indent ()
   (let ((pi (jade-previous-line-indentation))
         (ci (current-indentation)))
-    (if (not (= (+ (point-at-bol) ci) (point)))
+    (if (not (= (save-excursion (forward-to-indentation 0) (point)) (point)))
         (+ pi jade-indent-offset)
       (if (not pi)
           0
@@ -136,7 +136,6 @@
 \\{jade-mode-map}"
 
   (set-syntax-table jade-mode-syntax-table)
-  (setq indent-tabs-mode nil)
   (set (make-local-variable 'comment-start) "// ")
   (set (make-local-variable 'comment-start-skip) "//-?\\s *")
   (set (make-local-variable 'comment-end) "")
